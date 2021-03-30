@@ -80,3 +80,57 @@ int main(){
 
     return 0;
 }
+
+
+
+
+
+// simple solution
+
+
+ int evaluatePostfix(string s)
+    {
+        // Your code here
+        stack<int>st;
+        for(int i=0;i<s.length();i++){
+            
+            if(s[i]=='*' or s[i]=='/' or s[i]=='+' or s[i]=='-'){
+                
+                int second=st.top();
+                st.pop();
+                int  first=st.top();
+                st.pop();
+                switch(s[i]){
+                    
+                    case  '+':
+                     st.push(first+second);
+                     break;
+                    case '-':
+                     st.push(first-second);
+                     break;
+                    case '*':
+                     st.push(first*second);
+                     break;
+                    case '/':
+                     st.push(first/second);
+                     break;
+                }
+           
+                
+            }
+            else{
+                
+                st.push(s[i]-'0');
+            }
+            
+        }
+        
+    
+        return st.top();
+        
+        
+    }
+
+
+
+
