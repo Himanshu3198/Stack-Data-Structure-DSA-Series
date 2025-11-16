@@ -35,3 +35,24 @@ public:
         return nge;
     }
 };
+
+// python code
+
+class Solution:
+    def dailyTemperatures(self, temp: List[int]) -> List[int]:
+
+        n = len(temp)
+        st = []
+        st.append(n-1)
+        ans = [0]*n
+
+        for i in range (n-2,-1,-1):
+
+            while st and temp[st[-1]] <= temp[i]:
+                st.pop()
+                
+            ans[i] = st[-1]-i if st else 0
+            st.append(i)
+        
+        return ans
+        
